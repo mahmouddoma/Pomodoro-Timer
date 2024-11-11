@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer with To-Do List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pomodoro Timer</h1>
+
+      <!-- User selects the timer duration -->
+      <label for="timer-duration">Select Timer Duration:</label>
+      <select id="timer-duration">
+        <option value="5">5 minutes</option>
+        <option value="10">10 minutes</option>
+        <option value="15">15 minutes</option>
+        <option value="20" selected>20 minutes</option>
+      </select>
+
+      <div class="timer">
+        <span id="minutes">20</span>:<span id="seconds">00</span>
+      </div>
+      <button id="start-btn">Start</button>
+      <button id="reset-btn">Reset</button>
+
+      <!-- Button to stop the sound after time ends -->
+      <button id="stop-sound-btn" style="display: none">Stop Sound</button>
+
+      <h2>To-Do List</h2>
+      <div class="todo-container">
+        <input type="text" id="todo-input" placeholder="Add a new task" />
+        <button id="add-todo-btn">Add</button>
+        <ul id="todo-list"></ul>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

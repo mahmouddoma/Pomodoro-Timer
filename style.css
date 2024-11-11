@@ -1,0 +1,156 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Adjusted for smaller screens */
+  max-width: 400px; /* Limit width for larger screens */
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem; /* Adjusted for better readability */
+}
+
+.timer {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 14px; /* Adjusted font size */
+  width: 45%; /* Ensure buttons fit side by side */
+}
+
+button#reset-btn {
+  background-color: #dc3545;
+}
+
+.todo-container {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#todo-input {
+  width: calc(100% - 65px); /* Adjusted to fit with the button */
+  padding: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#add-todo-btn {
+  padding: 5px 10px;
+  background-color: #007bff;
+  display: inline-block;
+}
+
+#todo-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#todo-list li {
+  display: grid;
+  grid-template-columns: 1fr; /* One column for task text, two for buttons */
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+#todo-list li span {
+  margin-right: 10px; /* Space between text and buttons */
+  word-wrap: break-word; /* Prevent text from overflowing */
+}
+
+#todo-list li button {
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+#todo-list li button:nth-child(2) {
+  background-color: #28a745; /* Green for Complete */
+  color: white;
+}
+
+#todo-list li button:nth-child(3) {
+  background-color: #dc3545; /* Red for Remove */
+  color: white;
+}
+
+#todo-list li.completed span {
+  text-decoration: line-through; /* Add line-through for completed tasks */
+  color: #6c757d; /* Optional: Change the color to indicate completion */
+}
+
+#todo-list li.completed button {
+  background-color: #6c757d; /* Optional: Disable buttons for completed tasks */
+  cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1,
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .timer {
+    font-size: 36px; /* Reduced size for smaller screens */
+  }
+
+  button {
+    font-size: 12px; /* Smaller button text */
+    padding: 8px 10px;
+  }
+
+  select {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  #todo-input {
+    width: calc(100% - 60px); /* Adjust for smaller screens */
+  }
+
+  #todo-list li {
+    font-size: 0.8rem; /* Adjusted for smaller screens */
+  }
+}
