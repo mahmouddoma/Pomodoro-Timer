@@ -10,6 +10,7 @@ const addTodoBtn = document.getElementById("add-todo-btn");
 const todoList = document.getElementById("todo-list");
 const stopSoundBtn = document.getElementById("stop-sound-btn");
 const pauseBtn = document.getElementById("pause-btn");
+const timerDuration = document.getElementById("timer-duration");
 
 const alarmSound = new Audio("./audio/siren-alert-96052.mp3");
 
@@ -19,6 +20,21 @@ addTodoBtn.addEventListener("click", addTodo);
 stopSoundBtn.addEventListener("click", stopSound);
 
 stopSoundBtn.style.display = "none";
+
+// Add an event listener for the onchange event on the select element
+timerDuration.addEventListener("change", updateSelectedTime);
+
+function updateSelectedTime() {
+  const selectedTime = timerDuration.value;
+  if (selectedTime <= 0) {
+    alert("Please select a valid time.");
+    return;
+  }
+  timeLeft = selectedTime * 60;
+  updateDisplay();
+  saveTimerState();
+  alert(`Timer updated to ${selectedTime} minutes.`);
+}
 
 // Load data on page load
 window.addEventListener("DOMContentLoaded", () => {
@@ -30,9 +46,8 @@ window.addEventListener("DOMContentLoaded", () => {
 function startTimer() {
   const selectedTime = document.getElementById("timer-duration").value;
 
-  // Set timeLeft only if not already running
   if (!timerInterval && timeLeft === 0) {
-    timeLeft = selectedTime * 60; // Convert minutes to seconds
+    timeLeft = selectedTime * 60;
   }
 
   if (!timerInterval) {
@@ -55,10 +70,10 @@ function resetTimer() {
   clearInterval(timerInterval);
   timerInterval = null;
   const selectedTime = document.getElementById("timer-duration").value;
-  timeLeft = selectedTime * 60; // Reset to selected time
+  timeLeft = selectedTime * 60;
   updateDisplay();
-  saveTimerState(); // Save timer reset
-  hideStopButton(); // Hide the stop sound button when timer is reset
+  saveTimerState();
+  hideStopButton();
 }
 
 function updateDisplay() {
@@ -74,7 +89,7 @@ function addTodo() {
     const listItem = createTodoItem(taskText, false);
     todoList.appendChild(listItem);
     todoInput.value = "";
-    saveTodoList(); // Save updated to-do list
+    saveTodoList();
   }
 }
 
@@ -91,7 +106,7 @@ function createTodoItem(text, completed) {
   completeBtn.textContent = "Complete";
   completeBtn.addEventListener("click", () => {
     listItem.classList.toggle("completed");
-    saveTodoList(); // Save updated to-do list
+    saveTodoList();
   });
 
   // Add a "remove" button
@@ -99,7 +114,7 @@ function createTodoItem(text, completed) {
   removeBtn.textContent = "Remove";
   removeBtn.addEventListener("click", () => {
     todoList.removeChild(listItem);
-    saveTodoList(); // Save updated to-do list
+    saveTodoList();
   });
 
   if (completed) {
