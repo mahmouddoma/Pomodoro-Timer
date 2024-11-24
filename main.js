@@ -9,6 +9,7 @@ const todoInput = document.getElementById("todo-input");
 const addTodoBtn = document.getElementById("add-todo-btn");
 const todoList = document.getElementById("todo-list");
 const stopSoundBtn = document.getElementById("stop-sound-btn");
+const pauseBtn = document.getElementById("pause-btn");
 
 const alarmSound = new Audio("./audio/siren-alert-96052.mp3");
 
@@ -153,4 +154,12 @@ function loadTodoList() {
       todoList.appendChild(listItem);
     });
   }
+}
+
+//pause button
+pauseBtn.addEventListener("click", pauseTimer);
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+  timerInterval = null;
 }

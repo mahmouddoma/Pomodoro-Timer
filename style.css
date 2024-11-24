@@ -1,69 +1,70 @@
+/* Global Styling */
 body {
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f4f8;
+  min-height: 100vh;
+  background-color: #222; /* Black background for the body */
+  color: white;
   font-family: Arial, sans-serif;
-  margin: 0;
 }
 
+/* Container Styling */
 .container {
+  margin-bottom: 20px;
+  margin-top: 20px;
   text-align: center;
-  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 90%; /* Adjusted for smaller screens */
-  max-width: 400px; /* Limit width for larger screens */
-  box-sizing: border-box;
+  background: linear-gradient(135deg, #333, #444);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 2s ease-in-out, pulseBackground 5s infinite alternate;
+  transition: transform 0.3s ease-in-out;
 }
 
-h1,
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.5rem; /* Adjusted for better readability */
+.container:hover {
+  transform: scale(1.05);
 }
 
+/* Timer Section */
 .timer {
   font-size: 48px;
   margin-bottom: 20px;
 }
 
-select {
-  padding: 5px;
-  font-size: 14px;
-  margin: 10px 0;
+/* Form Elements */
+select,
+button,
+input {
+  margin: 5px;
+  padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: none;
 }
 
+/* Buttons */
 button {
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
   padding: 10px 15px;
   margin: 5px;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
-  background-color: #28a745;
-  color: #fff;
+  border: none;
   font-size: 14px; /* Adjusted font size */
   width: 45%; /* Ensure buttons fit side by side */
 }
 
+button:hover {
+  background-color: #666;
+  transform: translateY(-3px);
+}
+
 button#reset-btn {
   background-color: #dc3545;
-}
-
-.todo-container {
-  margin-top: 20px;
-  text-align: left;
-}
-
-#todo-input {
-  width: calc(100% - 65px); /* Adjusted to fit with the button */
-  padding: 5px;
-  margin-bottom: 10px;
-  display: inline-block;
 }
 
 #add-todo-btn {
@@ -72,56 +73,171 @@ button#reset-btn {
   display: inline-block;
 }
 
+/* To-Do List */
+/* Container for the to-do list */
+.todo-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Input for adding new tasks */
+#todo-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 250px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Add task button */
+#add-todo-btn {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-todo-btn:hover {
+  background-color: #45a049;
+}
+
+/* To-do list styles */
 #todo-list {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
 }
 
+/* Style for each list item */
 #todo-list li {
   display: grid;
-  grid-template-columns: 1fr; /* One column for task text, two for buttons */
+  grid-template-columns: 1fr;
   align-items: center;
-  background-color: #f8f9fa;
-  padding: 5px;
-  margin-bottom: 5px;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 5px 0;
   border-radius: 5px;
-  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
 }
 
-#todo-list li span {
-  margin-right: 10px; /* Space between text and buttons */
-  word-wrap: break-word; /* Prevent text from overflowing */
+#todo-list li:hover {
+  background-color: #e6f7e6;
 }
 
-#todo-list li button {
-  padding: 5px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-}
-
-#todo-list li button:nth-child(2) {
-  background-color: #28a745; /* Green for Complete */
-  color: white;
-}
-
-#todo-list li button:nth-child(3) {
-  background-color: #dc3545; /* Red for Remove */
-  color: white;
+/* Completed task styling */
+#todo-list li.completed {
+  text-decoration: line-through;
+  background-color: #d3ffd3;
 }
 
 #todo-list li.completed span {
-  text-decoration: line-through; /* Add line-through for completed tasks */
-  color: #6c757d; /* Optional: Change the color to indicate completion */
+  color: #6c757d; /* Dull color for completed tasks */
 }
 
 #todo-list li.completed button {
-  background-color: #6c757d; /* Optional: Disable buttons for completed tasks */
+  background-color: #6c757d; /* Disabled button color */
   cursor: not-allowed;
 }
 
+/* Button styling */
+#todo-list button {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#todo-list button:hover {
+  transform: translateY(-2px);
+}
+
+/* Complete button (Green) */
+#todo-list li button.complete-btn {
+  background-color: #28a745;
+}
+
+#todo-list li button.complete-btn:hover {
+  background-color: #218838;
+}
+
+/* Remove button (Red) */
+#todo-list li button.remove-btn {
+  background-color: #dc3545;
+}
+
+#todo-list li button.remove-btn:hover {
+  background-color: #c82333;
+}
+
+/* Style for task description */
+#todo-list li span {
+  color: #222;
+  margin-right: 10px;
+  word-wrap: break-word;
+}
+
+/* Focused state for buttons (Accessibility) */
+#todo-list button:focus {
+  outline: 2px solid #007bff; /* Blue outline on focus for accessibility */
+}
+
+#pause-btn {
+  background-color: #ffc107; /* Yellow for pause */
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+}
+
+#pause-btn:hover {
+  background-color: #ffdd57;
+  transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBackground {
+  from {
+    background: linear-gradient(135deg, #333, #555);
+  }
+  to {
+    background: linear-gradient(135deg, #444, #666);
+  }
+}
+
+/* Typography */
+h1,
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem; /* Adjusted for better readability */
+}
+
+/* Media Queries */
 @media (max-width: 500px) {
   .container {
     padding: 15px;
